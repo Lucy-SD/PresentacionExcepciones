@@ -6,7 +6,7 @@ public class TryCatchFinallyDemo {
 
     public static void readFileAndProcess(String filePath) {
         BufferedReader reader = null; // Se declara fuera del try para que 'finally' pueda acceder a él
-        System.out.println("--- Intentando leer el archivo: " + filePath + " ---");
+        System.out.println("Intentando leer el archivo: <" + filePath + "> . . .");
         try {
             reader = new BufferedReader(new FileReader(filePath)); // Puede lanzar FileNotFoundException (subclase de IOException)
             String line;
@@ -33,14 +33,11 @@ public class TryCatchFinallyDemo {
     }
 
     public static void main(String[] args) {
-        // Para probar, puedes crear un archivo llamado "sample.txt" con algún contenido,
-        // o usar un nombre de archivo que no exista.
-        // Ejemplo: echo "Hola Mundo\nEsto es una prueba." > sample.txt
 
-        System.out.println("--- Caso 1: Archivo existente (simulado) ---");
+        System.out.println("*** Ejemplo 1: Archivo existente ***");
         readFileAndProcess("src/ej.txt");
 
-        System.out.println("\n--- Caso 2: Archivo inexistente ---");
-        readFileAndProcess("archivo_inexistente.txt");
+        System.out.println("\n*** Ejemplo 2: Archivo inexistente ***");
+        readFileAndProcess("no_existe.txt");
     }
 }
