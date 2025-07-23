@@ -16,30 +16,6 @@ public class ExceptionTypesDemo {
         }
 
 
-        FileReader reader = null;
-
-        System.out.println("Intentando abrir un archivo que no existe . . .");
-        try {
-            reader = new FileReader("no_existe.txt"); // Esto lanzará FileNotFoundException (subclase de IOException)
-            //Si el archivo existiera, se podría leer aquí
-        } catch (IOException e) {
-            System.out.println("¡! ¡! Exception Verificada Capturada: Archivo no encontrado. Mensaje: " + e.getMessage());//*
-            //aquí es correcto utilizar .err, pero como tienen buffers diferentes, la información aparece "mezclada" en consola.
-        } finally {
-            // El bloque 'finally' se ejecuta siempre, garantizando el intento de cierre del recurso.
-            if(reader != null) {
-                try {
-                    reader.close(); //Esto puede lanzar una IOException
-                    System.out.println("Recurso de archivo cerrado con éxito en 'finally'.");
-                } catch (IOException e) {
-                    // Manejamos la excepción que puede ocurrir al intentar cerrar el recurso.
-                    // Como no hay niveles superiores, la imprimimos.
-                    System.out.println("¡! ¡! Error al cerrar el recurso en 'finally': " + e.getMessage());//*
-                }
-            }
-        }
-
-
         System.out.println("\n*** Ejemplo de Excepción No Verificada (Unchecked): NullPointerException ***");
         String s = null;
         System.out.println("Intentando obtener la longitud de una cadena nula...");
